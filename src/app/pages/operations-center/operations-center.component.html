@@ -1,0 +1,18 @@
+<div class="operations-center">
+  <h1>Operations Center</h1>
+
+  <div class="option-menu" [routerLink]="['/search-hero']" [queryParams]="{id: true}">
+    <div class="option-item">
+      <h2>Search Hero by ID</h2>
+      <p>Search any Hero introducing a valid ID.</p>
+    </div>
+    <div class="option-item" [routerLink]="['/search-hero']" [queryParams]="{name: true}" >
+      <h2>Search Hero by name</h2>
+      <p>Search any Hero that contain the entered letters or words.</p>
+    </div>
+    <div class="option-item" routerLink="/hero-manager" >
+      <h2>Hero Manager</h2>
+      <p>Get or change information of any heroes.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="hero-manager">
+  <h1>Hero Manager</h1>
+  <div class="actions">
+    <mat-form-field class="filter-input">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        placeholder="Filter"
+        (input)="filterList($event.target.value)"
+        uppercase
+      />
+    </mat-form-field>
+    <div class="add-btn">
+      <button mat-raised-button color="primary" (click)="openHeroForm()">
+        Add Hero
+      </button>
+    </div>
+  </div>
+
+  <app-hero-table
+    (edit)="openHeroForm($event)"
+    (delete)="openDeleteDialog($event)"
+    [dataSource]="filteredList || (heroes$ | async)"
+  ></app-hero-table>
+  <button mat-raised-button color="basic" routerLink="operations-center">
+    Back To Operations Center
+  </button>
+</div>

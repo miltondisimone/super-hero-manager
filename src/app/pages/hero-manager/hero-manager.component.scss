@@ -1,0 +1,20 @@
+.hero-manager {
+  margin: 1rem;
+  h1 {
+    text-align: center;
+    margin: 3rem 0;
+    font-size: 3.5rem;
+  }
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    .add-btn {
+      display: flex;
+      button {
+        align-self: center;
+      }
+    }
+    .filter-input {
+    }
+  }
+}
