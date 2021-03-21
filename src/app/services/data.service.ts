@@ -2,6 +2,7 @@ import { IHero } from './../models/hero.model';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Injectable()
 export class DataService {
@@ -16,17 +17,23 @@ export class DataService {
   }
 
   getHeroById(id: string): Observable<IHero> {
-    return new Observable<IHero>( (observer) => {
-      const hero = JSON.parse(localStorage.getItem('heroes')).find(hero => hero.id === id);
-      return hero || {};
-    })
+    return new Observable<IHero>((observer) => {
+      const hero = JSON.parse(localStorage.getItem('heroes')).find(
+        (hero) => hero.id === id
+      );
+      observer.next(hero || {});
+      observer.complete();
+    });
   }
 
-  getHeroByName(name: string): Observable<IHero> {
-    return new Observable<IHero>( (observer) => {
-      const hero = JSON.parse(localStorage.getItem('heroes')).filter(hero => hero.includes(name));
-      return hero || {};
-    })
+  getHeroByName(name: string): Observable<IHero[]> {
+    return new Observable<IHero[]>((observer) => {
+      const heroes = JSON.parse(localStorage.getItem('heroes')).filter((hero) =>
+        hero.name.includes(name)
+      );
+      observer.next(heroes || []);
+      observer.complete();
+    });
   }
 
   getAllHeroes(): Observable<IHero[]> {

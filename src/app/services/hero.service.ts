@@ -11,7 +11,7 @@ export class HeroService {
     return this.dataService.getHeroById(id);
   }
 
-  getHeroByName(name: string): Observable<IHero> {
+  getHeroByName(name: string): Observable<IHero[]> {
     return this.dataService.getHeroByName(name);
   }
 

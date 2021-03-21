@@ -14,10 +14,11 @@ import { DeleteHeroDialogComponent } from './delete-hero-dialog/delete-hero-dial
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UppercaseInputDirective } from './hero-form/hero-input.directive';
+import { HeroCardComponent } from './hero-card/hero-card.component';
 
 
 @NgModule({
-  declarations: [HeroTableComponent, HeroFormComponent, DeleteHeroDialogComponent, UppercaseInputDirective],
+  declarations: [HeroTableComponent, HeroFormComponent, DeleteHeroDialogComponent, UppercaseInputDirective, HeroCardComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -29,7 +30,7 @@ import { UppercaseInputDirective } from './hero-form/hero-input.directive';
     MatPaginatorModule,
     NgxPaginationModule
   ],
-  exports: [HeroTableComponent, UppercaseInputDirective],
+  exports: [HeroTableComponent, UppercaseInputDirective, HeroCardComponent],
   providers: []
 })
 export class ComponentsModule {}

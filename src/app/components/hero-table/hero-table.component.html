@@ -11,29 +11,11 @@
       let hero of dataSource | paginate: { itemsPerPage: 5, currentPage: page }
     "
   >
-    <div class="hero-card">
-      <div class="field">{{ hero.id }}</div>
-      <div class="field">{{ hero.name }}</div>
-      <div class="field">{{ hero.origin }}</div>
-      <div class="field options-btns">
-        <button
-          mat-mini-fab
-          color="primary"
-          aria-label="Edit button"
-          (click)="editHero(hero)"
-        >
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button
-          mat-mini-fab
-          color="warn"
-          aria-label="Delete button"
-          (click)="deleteHero(hero.id)"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </div>
+    <app-hero-card
+      [hero]="hero"
+      (editHero)="editHero($event)"
+      (deleteHero)="deleteHero($event)"
+    ></app-hero-card>
   </div>
 </div>
 

@@ -1,1 +1,30 @@
-<p>search-hero works!</p>
+<h1>Search Hero</h1>
+
+<form [formGroup]="searchForm" (ngSubmit)="searchHero()">
+  <mat-form-field *ngIf="searchType === 'id'">
+    <mat-label>Search by ID</mat-label>
+    <input matInput placeholder="Enter ID" formControlName="id" />
+  </mat-form-field>
+  <mat-form-field *ngIf="searchType === 'name'">
+    <mat-label>Search by Name</mat-label>
+    <input matInput placeholder="Enter Name" formControlName="name" uppercase />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!searchForm.value[searchType]"
+  >
+    Save
+  </button>
+</form>
+
+<ng-container *ngIf="heroes?.length">
+  <div class="hero-info" *ngFor="let hero of heroes">
+    <app-hero-card [hero]="hero" [editable]="false"></app-hero-card>
+  </div>
+</ng-container>
+<h2 *ngIf="!heroes?.length">No registries</h2>
+<button mat-raised-button color="basic" routerLink="operations-center">
+  Back To Operations Center
+</button>

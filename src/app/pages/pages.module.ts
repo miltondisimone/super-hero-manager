@@ -14,6 +14,7 @@ import { OperationsCenterComponent } from './operations-center/operations-center
 import { RouterModule } from '@angular/router';
 import { SearchHeroComponent } from './search-hero/search-hero.component';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HeroManagerComponent, OperationsCenterComponent, SearchHeroComponent],
@@ -26,7 +27,8 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     RouterModule,
     MatInputModule,
-    ComponentsModule
+    ComponentsModule,
+    ReactiveFormsModule
   ],
   exports: [HeroManagerComponent],
   providers: [HeroService, DataService],
