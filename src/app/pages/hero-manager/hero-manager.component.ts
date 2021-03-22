@@ -74,7 +74,7 @@ export class HeroManagerComponent implements OnInit {
   filterList(value: string) {
     this.filteredList = value
       ? this.heroes.filter(
-          (hero) => hero.name.includes(value) || hero.origin.includes(value)
+          (hero) => hero.name.includes(value.toUpperCase()) || hero.origin.includes(value.toUpperCase()) || hero.id.includes(value)
         )
       : null;
   }

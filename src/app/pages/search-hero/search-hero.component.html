@@ -1,6 +1,6 @@
 <h1>Search Hero</h1>
 
-<form [formGroup]="searchForm" (ngSubmit)="searchHero()">
+<form [formGroup]="searchForm" (ngSubmit)="searchHero()" class="search-form">
   <mat-form-field *ngIf="searchType === 'id'">
     <mat-label>Search by ID</mat-label>
     <input matInput placeholder="Enter ID" formControlName="id" />
@@ -9,17 +9,25 @@
     <mat-label>Search by Name</mat-label>
     <input matInput placeholder="Enter Name" formControlName="name" uppercase />
   </mat-form-field>
-  <button
-    mat-raised-button
-    color="primary"
-    type="submit"
-    [disabled]="!searchForm.value[searchType]"
-  >
-    Save
-  </button>
+  <div class="submit-btn">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!searchForm.value[searchType]"
+    >
+      Save
+    </button>
+  </div>
 </form>
 
 <ng-container *ngIf="heroes?.length">
+  <div class="header">
+    <div class="field">ID</div>
+    <div class="field">Name</div>
+    <div class="field">Origin</div>
+  </div>
+
   <div class="hero-info" *ngFor="let hero of heroes">
     <app-hero-card [hero]="hero" [editable]="false"></app-hero-card>
   </div>
